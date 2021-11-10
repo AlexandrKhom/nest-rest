@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post, Delete, Put} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Delete, Put, HttpCode, HttpStatus} from '@nestjs/common';
 import {CreateProductDto} from "./dto/create-product.dto";
 import {UpdateProductDto} from "./dto/update-product.dto";
 
@@ -15,6 +15,7 @@ export class ProductsController {
     }
 
     @Post()
+    @HttpCode(HttpStatus.CREATED)
     post(@Body() dto: CreateProductDto) {
         return `title: ${dto.title} and ${dto.price}`
     }
